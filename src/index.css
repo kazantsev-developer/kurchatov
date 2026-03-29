@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+@source "../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+
+@theme {
+  --color-primary: #0070f0;
+  --color-secondary: #9353d3;
+  --color-success: #17c964;
+  --color-warning: #f5a524;
+  --color-danger: #f31260;
+}
+
+:root,
+body,
+#root {
+  background-color: #020617;
+  color: white;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
