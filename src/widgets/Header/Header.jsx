@@ -43,7 +43,7 @@ export const Header = ({ activeIndex, totalSlides }) => {
         <NavbarContent justify="end" className="shrink-0">
           <NavbarItem>
             <p className="text-white font-black text-xs sm:text-sm md:text-xl uppercase tracking-tight whitespace-nowrap">
-              Казанцева Яна 7 А
+              Казанцева Яна 7 "А"
             </p>
           </NavbarItem>
         </NavbarContent>
