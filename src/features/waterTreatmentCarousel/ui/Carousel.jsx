@@ -4,26 +4,44 @@ import { slides } from '../model/slidesData';
 import { getOffset } from '../../../shared/lib/utils';
 import { CarouselCard } from './CarouselCard';
 import { CarouselNavigation } from './CarouselNavigation';
+import { useSwipeable } from 'react-swipeable';
 
 export const Carousel = ({ activeIndex, onPrev, onNext }) => {
   const { isMobile, isTiny } = useScreenSize();
 
-  const buttonSize = isMobile ? (isTiny ? 40 : 48) : 80;
-  const buttonIconSize = isMobile ? (isTiny ? 24 : 28) : 44;
-  const titleSize = isMobile ? (isTiny ? 'text-lg' : 'text-xl') : 'text-2xl';
-  const textSize = isMobile ? (isTiny ? 'text-sm' : 'text-base') : 'text-lg';
-  const chipSize = isMobile ? 'sm' : 'md';
+  const buttonSize = isTiny ? 36 : isMobile ? 44 : 70;
+  const buttonIconSize = isTiny ? 20 : isMobile ? 24 : 40;
+  const titleSize = isTiny
+    ? 'text-base'
+    : isMobile
+      ? 'text-lg'
+      : 'text-2xl md:text-3xl';
+  const textSize = isTiny
+    ? 'text-xs'
+    : isMobile
+      ? 'text-sm'
+      : 'text-base md:text-lg';
+  const chipSize = isTiny ? 'sm' : isMobile ? 'sm' : 'md';
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => onNext(),
+    onSwipedRight: () => onPrev(),
+    preventScrollOnSwipe: true,
+    trackMouse: false,
+  });
 
   return (
-    <>
-      <CarouselNavigation
-        onPrev={onPrev}
-        onNext={onNext}
-        buttonSize={buttonSize}
-        buttonIconSize={buttonIconSize}
-      />
+    <div {...handlers} className="w-full h-full">
+      {!isMobile && (
+        <CarouselNavigation
+          onPrev={onPrev}
+          onNext={onNext}
+          buttonSize={buttonSize}
+          buttonIconSize={buttonIconSize}
+        />
+      )}
 
-      <div className="relative flex items-center justify-center w-full h-full py-8 md:py-12 lg:py-16">
+      <div className="relative flex items-center justify-center w-full h-full py-2 sm:py-3 md:py-8 lg:py-12">
         <AnimatePresence mode="popLayout">
           {slides.map((slide, index) => {
             const offset = getOffset(index, activeIndex, slides.length);
@@ -48,6 +66,6 @@ export const Carousel = ({ activeIndex, onPrev, onNext }) => {
           })}
         </AnimatePresence>
       </div>
-    </>
+    </div>
   );
 };

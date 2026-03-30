@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody } from '@heroui/card';
+import { Card, CardBody } from '@heroui/card';
 import { Chip } from '@heroui/chip';
 import { motion } from 'framer-motion';
 import { getCardAnimation } from '../lib/animations';
@@ -14,8 +14,18 @@ export const CarouselCard = ({
   chipSize,
 }) => {
   const animation = getCardAnimation(offset, isCenter, isMobile, isTiny);
-  const cardWidth = isMobile ? 'w-72 sm:w-80' : 'w-[500px] md:w-[600px]';
-  const cardHeight = isMobile ? 'h-[480px]' : 'h-[520px]';
+
+  const cardWidth = isTiny
+    ? 'w-[calc(100vw-32px)] max-w-[320px]'
+    : isMobile
+      ? 'w-[calc(100vw-48px)] max-w-[380px]'
+      : 'w-[500px] md:w-[600px]';
+
+  const cardHeight = isTiny
+    ? 'h-[480px]'
+    : isMobile
+      ? 'h-[500px]'
+      : 'h-[520px]';
 
   return (
     <motion.div
@@ -33,7 +43,7 @@ export const CarouselCard = ({
           }
           backdrop-blur-3xl ring-1 ring-white/10 overflow-hidden transition-shadow duration-300 relative`}
       >
-        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 z-10">
+        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10">
           <Chip
             variant="shadow"
             size={chipSize}
@@ -43,7 +53,11 @@ export const CarouselCard = ({
           </Chip>
         </div>
 
-        <div className="w-full h-52 sm:h-64 md:h-72 overflow-hidden">
+        <div
+          className={`w-full overflow-hidden ${
+            isMobile ? 'h-full' : 'h-56 sm:h-64 md:h-72'
+          }`}
+        >
           <img
             src={slide.image}
             alt={slide.title}
@@ -55,20 +69,30 @@ export const CarouselCard = ({
           />
         </div>
 
-        <CardBody className="flex flex-col items-start text-left gap-2 sm:gap-3 px-5 sm:px-6 md:px-8 py-3 sm:py-4">
-          <h2
-            className={`${titleSize} font-black text-white leading-tight uppercase tracking-tighter`}
-          >
-            {slide.title}
-          </h2>
-          <p
-            className={`text-blue-50/90 ${
-              isMobile ? (isTiny ? 'text-sm' : 'text-base') : 'text-xl'
-            } font-light leading-relaxed tracking-tight line-clamp-4`}
-          >
-            {slide.text}
-          </p>
-        </CardBody>
+        {isMobile ? (
+          <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/90 via-black/60 to-transparent p-4 pt-8">
+            <h2
+              className={`${titleSize} font-black text-white leading-tight uppercase tracking-tighter text-center`}
+            >
+              {slide.title}
+            </h2>
+          </div>
+        ) : (
+          <CardBody className="flex flex-col items-start text-left gap-2 md:gap-3 px-5 md:px-8 py-4 md:py-5">
+            <h2
+              className={`${titleSize} font-black text-white leading-tight uppercase tracking-tighter`}
+            >
+              {slide.title}
+            </h2>
+            <p
+              className={`text-blue-50/90 ${
+                isTiny ? 'text-xs' : 'text-base md:text-lg'
+              } font-light leading-relaxed tracking-tight`}
+            >
+              {slide.text}
+            </p>
+          </CardBody>
+        )}
       </Card>
     </motion.div>
   );

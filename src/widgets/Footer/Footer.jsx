@@ -2,15 +2,15 @@ import { CarouselIndicators } from '../../features/waterTreatmentCarousel/ui/Car
 
 export const Footer = ({ activeIndex, totalSlides, onGoTo }) => {
   return (
-    <footer className="h-20 sm:h-24 md:h-28 flex flex-col items-center justify-center bg-black/40 border-t border-white/5 backdrop-blur-3xl shrink-0 z-50 px-2 sm:px-4">
-      <div className="mb-3 sm:mb-4 md:mb-5">
+    <footer className="h-10 sm:h-12 md:h-16 flex flex-col items-center justify-center bg-black/40 border-t border-white/5 backdrop-blur-3xl shrink-0 z-50 px-2 sm:px-4">
+      <div className="mb-0">
         <CarouselIndicators
           total={totalSlides}
           active={activeIndex}
           onGoTo={onGoTo}
         />
       </div>
-      <p className="text-[10px] sm:text-xs md:text-sm text-white/30 font-black tracking-widest sm:tracking-[0.2em] md:tracking-[0.6em] uppercase text-center">
+      <p className="hidden sm:block text-[10px] sm:text-xs text-white/30 font-black tracking-widest uppercase text-center mt-1">
         Учебный год 2025-2026
       </p>
     </footer>

@@ -1,7 +1,12 @@
 import { Button } from '@heroui/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export const CarouselNavigation = ({ onPrev, onNext, buttonSize, buttonIconSize }) => {
+export const CarouselNavigation = ({
+  onPrev,
+  onNext,
+  buttonSize,
+  buttonIconSize,
+}) => {
   return (
     <div className="absolute inset-0 z-50 flex justify-between items-center pointer-events-none">
       <Button
