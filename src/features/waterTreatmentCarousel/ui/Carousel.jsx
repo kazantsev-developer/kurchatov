@@ -10,7 +10,7 @@ export const Carousel = ({ activeIndex, onPrev, onNext }) => {
 
   const buttonSize = isMobile ? (isTiny ? 40 : 48) : 80;
   const buttonIconSize = isMobile ? (isTiny ? 24 : 28) : 44;
-  const titleSize = isMobile ? (isTiny ? 'text-xl' : 'text-2xl') : 'text-3xl';
+  const titleSize = isMobile ? (isTiny ? 'text-lg' : 'text-xl') : 'text-2xl';
   const textSize = isMobile ? (isTiny ? 'text-sm' : 'text-base') : 'text-lg';
   const chipSize = isMobile ? 'sm' : 'md';
 
@@ -23,7 +23,7 @@ export const Carousel = ({ activeIndex, onPrev, onNext }) => {
         buttonIconSize={buttonIconSize}
       />
 
-      <div className="relative flex items-center justify-center w-full h-full px-2 sm:px-4 md:px-0">
+      <div className="relative flex items-center justify-center w-full h-full py-8 md:py-12 lg:py-16">
         <AnimatePresence mode="popLayout">
           {slides.map((slide, index) => {
             const offset = getOffset(index, activeIndex, slides.length);

@@ -14,8 +14,8 @@ export const CarouselCard = ({
   chipSize,
 }) => {
   const animation = getCardAnimation(offset, isCenter, isMobile, isTiny);
-  const cardWidth = isMobile ? 'w-80 sm:w-96' : 'w-[600px] md:w-[800px]';
-  const cardHeight = isMobile ? 'h-[550px]' : 'h-[650px]';
+  const cardWidth = isMobile ? 'w-72 sm:w-80' : 'w-[500px] md:w-[600px]';
+  const cardHeight = isMobile ? 'h-[480px]' : 'h-[520px]';
 
   return (
     <motion.div
@@ -26,21 +26,24 @@ export const CarouselCard = ({
     >
       <Card
         className={`${cardWidth} ${cardHeight} border-none 
-          ${isCenter ? 'bg-slate-800/90 shadow-[0_0_100px_-20px_rgba(59,130,246,0.5)]' : 'bg-slate-900/60'}
-          backdrop-blur-3xl ring-1 ring-white/10 overflow-hidden`}
+          ${
+            isCenter
+              ? 'bg-slate-800/90 shadow-[0_0_80px_-15px_rgba(59,130,246,0.8)] ring-2 ring-blue-500/30'
+              : 'bg-slate-900/60 shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]'
+          }
+          backdrop-blur-3xl ring-1 ring-white/10 overflow-hidden transition-shadow duration-300 relative`}
       >
-        {/* Chip с отступами больше сверху */}
-        <CardHeader className="absolute top-6 left-6 sm:top-8 sm:left-8 md:top-10 md:left-10 z-10">
+        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 z-10">
           <Chip
             variant="shadow"
             size={chipSize}
-            className="font-bold uppercase tracking-widest px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm bg-blue-600/80 backdrop-blur-sm"
+            className="font-bold uppercase tracking-widest px-2 sm:px-3 py-1 text-xs sm:text-sm bg-blue-600/90 backdrop-blur-sm shadow-lg"
           >
             {slide.slideNumber}
           </Chip>
-        </CardHeader>
+        </div>
 
-        <div className="w-full h-64 sm:h-80 md:h-96 overflow-hidden">
+        <div className="w-full h-52 sm:h-64 md:h-72 overflow-hidden">
           <img
             src={slide.image}
             alt={slide.title}
@@ -60,8 +63,8 @@ export const CarouselCard = ({
           </h2>
           <p
             className={`text-blue-50/90 ${
-              isMobile ? (isTiny ? 'text-base' : 'text-lg') : 'text-2xl'
-            } font-light leading-relaxed tracking-tight`}
+              isMobile ? (isTiny ? 'text-sm' : 'text-base') : 'text-xl'
+            } font-light leading-relaxed tracking-tight line-clamp-4`}
           >
             {slide.text}
           </p>
