@@ -16,13 +16,15 @@ export const Header = () => {
           size={isTiny ? 24 : isMobile ? 28 : 36}
         />
         <div className="flex flex-col">
+          {/* Курчатовский класс показывается только с lg (1024px) */}
           <p
-            className={`font-black text-blue-500 text-sm sm:text-base md:text-3xl tracking-tighter uppercase leading-none whitespace-nowrap ${isTiny ? 'hidden' : 'block'}`}
+            className={`font-black text-blue-500 text-sm sm:text-base md:text-3xl tracking-tighter uppercase leading-none whitespace-nowrap hidden lg:block`}
           >
             Курчатовский класс
           </p>
+          {/* ПРЕДМЕТ БИОЛОГИЯ показывается только с lg (1024px) */}
           <p
-            className={`text-[8px] sm:text-[10px] md:text-[15px] text-blue-300/60 tracking-widest sm:tracking-[0.2em] md:tracking-[0.4em] font-black uppercase mt-0.5 sm:mt-1 md:mt-2 ${isTiny ? 'hidden' : 'block'}`}
+            className={`text-[8px] sm:text-[10px] md:text-[15px] text-blue-300/60 tracking-widest sm:tracking-[0.2em] md:tracking-[0.4em] font-black uppercase mt-0.5 sm:mt-1 md:mt-2 hidden lg:block`}
           >
             ПРЕДМЕТ БИОЛОГИЯ
           </p>
