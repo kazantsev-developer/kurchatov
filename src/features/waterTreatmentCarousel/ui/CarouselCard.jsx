@@ -21,9 +21,9 @@ export const CarouselCard = ({
       ? 'w-[calc(100vw-48px)] max-w-[380px]'
       : 'w-[500px] md:w-[600px]';
 
-  const cardHeight = isMobile ? '' : 'h-[520px]';
+  const cardHeight = '';
 
-  const imageHeight = isMobile ? 'h-52' : 'h-56 sm:h-64 md:h-72';
+  const imageHeight = isMobile ? 'h-64' : 'h-72 sm:h-80 md:h-96';
 
   return (
     <motion.div
@@ -39,7 +39,7 @@ export const CarouselCard = ({
               ? 'bg-slate-800/90 shadow-[0_0_80px_-15px_rgba(59,130,246,0.8)] ring-2 ring-blue-500/30'
               : 'bg-slate-900/60 shadow-[0_0_40px_-15px_rgba(59,130,246,0.3)]'
           }
-          backdrop-blur-3xl ring-1 ring-white/10 overflow-visible transition-shadow duration-300 relative flex flex-col`}
+          backdrop-blur-3xl ring-1 ring-white/10 overflow-hidden transition-shadow duration-300 relative flex flex-col`}
       >
         <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10">
           <Chip

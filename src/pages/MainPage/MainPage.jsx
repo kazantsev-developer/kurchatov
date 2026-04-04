@@ -6,7 +6,7 @@ import { Carousel } from '../../features/waterTreatmentCarousel';
 
 export const MainPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const totalSlides = 10;
+  const totalSlides = 11;
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
