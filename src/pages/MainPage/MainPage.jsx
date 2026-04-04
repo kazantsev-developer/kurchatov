@@ -24,7 +24,8 @@ export const MainPage = () => {
     <div className="h-screen w-full flex flex-col bg-[#020617] text-white antialiased overflow-hidden relative">
       <AnimatedBackground />
       <Header activeIndex={activeIndex} totalSlides={totalSlides} />
-      <main className="flex-1 relative flex items-center justify-center overflow-hidden">
+      <main className="flex-1 relative flex items-center justify-center overflow-hidden pt-1">
+        {' '}
         <Carousel
           activeIndex={activeIndex}
           onPrev={handlePrev}

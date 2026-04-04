@@ -10,9 +10,9 @@ export const Header = ({ activeIndex, totalSlides }) => {
     <Navbar
       isBordered
       maxWidth="full"
-      className="bg-slate-900/60 backdrop-blur-2xl border-white/10 h-auto min-h-14 shrink-0 py-1"
+      className="bg-slate-900/60 backdrop-blur-2xl border-white/10 h-auto min-h-0 py-0"
       classNames={{
-        wrapper: 'px-[15px] sm:px-[30px] w-full',
+        wrapper: 'px-[15px] sm:px-[30px] w-full py-0', // добавил py-0
       }}
     >
       <div className="flex w-full items-center justify-between gap-4 sm:gap-8">

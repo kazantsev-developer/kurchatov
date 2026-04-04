@@ -41,7 +41,7 @@ export const Carousel = ({ activeIndex, onPrev, onNext }) => {
         />
       )}
 
-      <div className="relative flex items-center justify-center w-full h-full py-2 sm:py-3 md:py-8 lg:py-12">
+      <div className="relative flex items-center justify-center w-full h-full">
         <AnimatePresence mode="popLayout">
           {slides.map((slide, index) => {
             const offset = getOffset(index, activeIndex, slides.length);

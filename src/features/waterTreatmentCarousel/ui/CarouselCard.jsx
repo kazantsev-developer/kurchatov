@@ -21,11 +21,9 @@ export const CarouselCard = ({
       ? 'w-[calc(100vw-48px)] max-w-[380px]'
       : 'w-[500px] md:w-[600px]';
 
-  const cardHeight = isTiny
-    ? 'h-[480px]'
-    : isMobile
-      ? 'h-[500px]'
-      : 'h-[520px]';
+  const cardHeight = isMobile ? '' : 'h-[520px]';
+
+  const imageHeight = isMobile ? 'h-52' : 'h-56 sm:h-64 md:h-72';
 
   return (
     <motion.div
@@ -39,9 +37,9 @@ export const CarouselCard = ({
           ${
             isCenter
               ? 'bg-slate-800/90 shadow-[0_0_80px_-15px_rgba(59,130,246,0.8)] ring-2 ring-blue-500/30'
-              : 'bg-slate-900/60 shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]'
+              : 'bg-slate-900/60 shadow-[0_0_40px_-15px_rgba(59,130,246,0.3)]'
           }
-          backdrop-blur-3xl ring-1 ring-white/10 overflow-hidden transition-shadow duration-300 relative`}
+          backdrop-blur-3xl ring-1 ring-white/10 overflow-visible transition-shadow duration-300 relative flex flex-col`}
       >
         <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10">
           <Chip
@@ -53,46 +51,34 @@ export const CarouselCard = ({
           </Chip>
         </div>
 
-        <div
-          className={`w-full overflow-hidden ${
-            isMobile ? 'h-full' : 'h-56 sm:h-64 md:h-72'
-          }`}
-        >
-          <img
-            src={slide.image}
-            alt={slide.title}
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.target.src =
-                'https://placehold.co/800x400/1e293b/3b82f6?text=Image+loading';
-            }}
-          />
+        <div className="w-full overflow-hidden shrink-0">
+          <div className={`w-full ${imageHeight}`}>
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.src =
+                  'https://placehold.co/800x400/1e293b/3b82f6?text=Image+loading';
+              }}
+            />
+          </div>
         </div>
 
-        {isMobile ? (
-          <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/90 via-black/60 to-transparent p-4 pt-8">
-            <h2
-              className={`${titleSize} font-black text-white leading-tight uppercase tracking-tighter text-center`}
-            >
-              {slide.title}
-            </h2>
-          </div>
-        ) : (
-          <CardBody className="flex flex-col items-start text-left gap-2 md:gap-3 px-5 md:px-8 py-4 md:py-5">
-            <h2
-              className={`${titleSize} font-black text-white leading-tight uppercase tracking-tighter`}
-            >
-              {slide.title}
-            </h2>
-            <p
-              className={`text-blue-50/90 ${
-                isTiny ? 'text-xs' : 'text-base md:text-lg'
-              } font-light leading-relaxed tracking-tight`}
-            >
-              {slide.text}
-            </p>
-          </CardBody>
-        )}
+        <CardBody className="flex flex-col items-start text-left gap-2 px-4 py-4">
+          <h2
+            className={`${titleSize} font-black text-white leading-tight uppercase tracking-tighter`}
+          >
+            {slide.title}
+          </h2>
+          <p
+            className={`text-blue-50/90 ${
+              isTiny ? 'text-xs' : textSize
+            } font-light leading-relaxed tracking-tight`}
+          >
+            {slide.text}
+          </p>
+        </CardBody>
       </Card>
     </motion.div>
   );
